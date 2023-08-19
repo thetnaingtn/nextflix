@@ -2,9 +2,9 @@ import Link, { LinkProps } from 'next/link';
 import Image from 'next/image';
 import { PropsWithChildren } from 'react';
 
-import logo from '../../public/logo.svg';
+import logo from '../../../public/logo.svg';
 
-function Header({ children }: PropsWithChildren) {
+function Nav({ children }: PropsWithChildren) {
   return <header>{children}</header>;
 }
 
@@ -42,4 +42,4 @@ const ButtonLink = (props: PropsWithChildren<LinkProps>) => {
   );
 };
 
-export default Object.assign(Header, { Logo, ButtonLink, Frame });
+export default Object.assign(Nav, { Logo, ButtonLink, Frame });
