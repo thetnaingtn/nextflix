@@ -1,6 +1,7 @@
 import Link, { LinkProps } from 'next/link';
+import { twMerge as tm } from 'tailwind-merge';
 import Image from 'next/image';
-import { PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
 import logo from '../../../public/logo.svg';
 
@@ -14,6 +15,10 @@ const Frame = ({ children }: PropsWithChildren) => {
       {children}
     </div>
   );
+};
+
+const Group = ({ children }: PropsWithChildren) => {
+  return <div className="flex items-center">{children}</div>;
 };
 
 const Logo = () => {
@@ -42,4 +47,19 @@ const ButtonLink = (props: PropsWithChildren<LinkProps>) => {
   );
 };
 
-export default Object.assign(Nav, { Logo, ButtonLink, Frame });
+const TextLink = (
+  props: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>
+) => {
+  const { children, className, ...restProps } = props;
+
+  return (
+    <button
+      {...restProps}
+      className={tm('bg-transparent', 'outline-none', 'text-white', className)}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Object.assign(Nav, { Logo, ButtonLink, Frame, TextLink, Group });
