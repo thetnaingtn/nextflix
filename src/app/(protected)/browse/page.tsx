@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>Protected</h1>;
+  return <h1>Browse Page</h1>;
 }
