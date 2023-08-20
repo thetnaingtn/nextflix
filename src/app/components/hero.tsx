@@ -20,7 +20,7 @@ export default async function Hero(props: HeroProps) {
     const random = Math.floor(Math.random() * props.shows.length);
     let randomShow = props.shows[random];
     banner = randomShow && (
-      <div className="container w-full max-w-2xl">
+      <div className="container w-full max-w-screen-2xl">
         <div className="absolute inset-0 -z-10 h-screen w-full">
           <div
             className={tm(
@@ -38,7 +38,7 @@ export default async function Hero(props: HeroProps) {
             priority
           />
         </div>
-        <div className="grid max-w-lg space-y-2 pt-24 ">
+        <div className="grid max-w-lg space-y-2 pt-24">
           <h1 className="text-3xl font-bold md:text-4xl">
             {randomShow?.title ?? randomShow?.name}
           </h1>
@@ -67,7 +67,7 @@ export default async function Hero(props: HeroProps) {
     );
   } else {
     banner = (
-      <div className="container w-full max-w-2xl">
+      <div className="container w-full max-w-screen-2xl">
         <div className="absolute inset-0 -z-10 h-screen w-full">
           <div
             className={tm(

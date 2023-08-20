@@ -15,7 +15,7 @@ export default function ProtectedLayout({ children }: PropsWithChildren) {
   };
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Nav>
         <Nav.Frame>
           <Nav.Group>
@@ -29,8 +29,8 @@ export default function ProtectedLayout({ children }: PropsWithChildren) {
           </Nav.Group>
         </Nav.Frame>
       </Nav>
-      {children}
+      <main className="flex-1">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
