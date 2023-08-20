@@ -12,7 +12,7 @@ export default async function UnprotectedLayout({
   const session = await getServerSession(authOptions);
 
   if (session?.user) {
-    redirect('/browse');
+    redirect('/series');
   }
 
   return (
