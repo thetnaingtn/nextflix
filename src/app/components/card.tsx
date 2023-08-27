@@ -3,9 +3,7 @@ import { HTMLAttributes, PropsWithChildren } from 'react';
 
 function Card({ children }: PropsWithChildren) {
   return (
-    <div className="flex flex-col mb-[50px] first-of-type:mt-[-100px] last-of-type:mb-0 lg:group-first-of-type/container:mt-[-100px]">
-      {children}
-    </div>
+    <div className="flex flex-col mb-[50px] last-of-type:mb-0">{children}</div>
   );
 }
 
@@ -15,7 +13,19 @@ function Group({
   ...restProps
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   return (
-    <div className={tm('flex group/container', className)} {...restProps}>
+    <div className={tm('flex flex-col', className)} {...restProps}>
+      {children}
+    </div>
+  );
+}
+
+function Entities({
+  children,
+  className,
+  ...restProps
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div className={tm('flex flex-row', className)} {...restProps}>
       {children}
     </div>
   );
@@ -33,6 +43,21 @@ function Item({
         className,
         'flex flex-col relative cursor-pointer mr-[5px] group first-of-type:ml-14 last-of-type:mr-14'
       )}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Image({
+  children,
+  className,
+  ...restProps
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div
+      className={tm('border-0 w-[273px] h-auto p-0 m-0', className)}
+      {...restProps}
     >
       {children}
     </div>
@@ -189,6 +214,8 @@ function Maturity({
 export default Object.assign(Card, {
   Group,
   Item,
+  Image,
+  Entities,
   Title,
   SubTitle,
   Text,
