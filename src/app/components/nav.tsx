@@ -10,6 +10,7 @@ import {
 
 import logo from '../../../public/logo.svg';
 import searchIcon from '../../../public/search.png';
+import { usePathname, useRouter } from 'next/navigation';
 
 function Nav({ children }: PropsWithChildren) {
   return <header>{children}</header>;
@@ -76,6 +77,8 @@ function Search({
   className,
   ...restProps
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  const pathname = usePathname();
+  const router = useRouter();
   const [searchActive, setSearchActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   return (
@@ -97,6 +100,13 @@ function Search({
         }
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search films and series"
+        onKeyDown={(e) => {
+          if (e.key !== 'Enter') return;
+          const newPathname = searchTerm
+            ? `${pathname}?search=${searchTerm}`
+            : pathname;
+          router.push(newPathname);
+        }}
       />
     </div>
   );
