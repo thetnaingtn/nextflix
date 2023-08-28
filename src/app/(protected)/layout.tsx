@@ -27,6 +27,9 @@ export default function ProtectedLayout({ children }: PropsWithChildren) {
               Films
             </Nav.TextLink>
           </Nav.Group>
+          <Nav.Group>
+            <Nav.Search />
+          </Nav.Group>
         </Nav.Frame>
       </Nav>
       <main className="flex-1">{children}</main>
