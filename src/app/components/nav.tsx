@@ -15,19 +15,19 @@ function Nav({ children }: PropsWithChildren) {
   return <header>{children}</header>;
 }
 
-const Frame = ({ children }: PropsWithChildren) => {
+function Frame({ children }: PropsWithChildren) {
   return (
     <div className="flex my-0 mx-14 h-[100px] justify-between items-center">
       {children}
     </div>
   );
-};
+}
 
-const Group = ({ children }: PropsWithChildren) => {
+function Group({ children }: PropsWithChildren) {
   return <div className="flex items-center">{children}</div>;
-};
+}
 
-const Logo = () => {
+function Logo() {
   return (
     <Link href="/">
       <Image
@@ -39,9 +39,9 @@ const Logo = () => {
       />
     </Link>
   );
-};
+}
 
-const ButtonLink = (props: PropsWithChildren<LinkProps>) => {
+function ButtonLink(props: PropsWithChildren<LinkProps>) {
   const { children, ...rest } = props;
   return (
     <Link
@@ -51,11 +51,11 @@ const ButtonLink = (props: PropsWithChildren<LinkProps>) => {
       {children}
     </Link>
   );
-};
+}
 
-const TextLink = (
+function TextLink(
   props: PropsWithChildren<LinkProps & { className?: string }>
-) => {
+) {
   const { children, className, ...restProps } = props;
 
   return (
@@ -69,12 +69,7 @@ const TextLink = (
       {children}
     </Link>
   );
-};
-
-// margin-left: ${({ active }) => (active === true ? '10px' : '0')};
-//   padding: ${({ active }) => (active === true ? '0 10px' : '0')};
-//   opacity: ${({ active }) => (active === true ? '1' : '0')};
-//   width: ${({ active }) => (active === true ? '200px' : '0px')};
+}
 
 function Search({
   children,
