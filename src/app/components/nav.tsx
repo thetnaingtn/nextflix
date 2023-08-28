@@ -48,17 +48,20 @@ const ButtonLink = (props: PropsWithChildren<LinkProps>) => {
 };
 
 const TextLink = (
-  props: PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>
+  props: PropsWithChildren<LinkProps & { className?: string }>
 ) => {
   const { children, className, ...restProps } = props;
 
   return (
-    <button
+    <Link
+      className={tm(
+        'text-white no-underline mr-[30px] font-normal cursor-pointer hover:font-bold last-of-type:mr-0',
+        className ?? ''
+      )}
       {...restProps}
-      className={tm('bg-transparent', 'outline-none', 'text-white', className)}
     >
       {children}
-    </button>
+    </Link>
   );
 };
 
