@@ -21,16 +21,16 @@ export default function Collections({ collections }: CollectionsProps) {
           <Card.Entities>
             {/* temporarily cut off shows */}
             {collection.shows.slice(0, 5).map((show) => {
+              const src = show.backdrop_path
+                ? `https://image.tmdb.org/t/p/w500${show.backdrop_path}`
+                : 'https://via.placeholder.com/230x130.jpg/ffffff?text=No+Movie+Poster';
               return (
                 <Card.Item data-testid="item" key={show.id}>
                   <Card.Image>
                     <Image
                       width={305}
                       height={200}
-                      src={
-                        `https://image.tmdb.org/t/p/w500${show.backdrop_path}` ??
-                        ''
-                      }
+                      src={src}
                       alt={show.title ?? 'show-image'}
                     />
                   </Card.Image>
