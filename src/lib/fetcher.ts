@@ -73,3 +73,14 @@ export async function getShow(mediaType: MediaType) {
     docs: docs?.results,
   };
 }
+
+export async function getSearchedResult(searchTerm: string) {
+  const url = `https://api.themoviedb.org/3/search/multi?api_key=${
+    process.env.NEXT_PUBLIC_TMDB_API_KEY
+  }&query=${encodeURIComponent(searchTerm)}`;
+
+  const resp = await fetch(url);
+  const shows = await resp.json();
+
+  return shows as { results: Show[] };
+}

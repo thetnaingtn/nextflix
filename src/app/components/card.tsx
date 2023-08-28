@@ -25,7 +25,7 @@ function Entities({
   ...restProps
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   return (
-    <div className={tm('flex flex-row', className)} {...restProps}>
+    <div className={tm('flex flex-row gap-x-[5px]', className)} {...restProps}>
       {children}
     </div>
   );
@@ -40,8 +40,8 @@ function Item({
     <div
       {...restProps}
       className={tm(
-        className,
-        'flex flex-col relative cursor-pointer mr-[5px] group first-of-type:ml-14 last-of-type:mr-14'
+        'flex flex-col relative cursor-pointer group first-of-type:ml-14 last-of-type:mr-14',
+        className
       )}
     >
       {children}

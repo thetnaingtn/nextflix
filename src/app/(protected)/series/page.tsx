@@ -2,8 +2,12 @@ import Hero from '@/app/components/hero';
 import { getShow } from '@/lib/fetcher';
 import Collections from '../_components/collections';
 
-export default async function Page() {
-  const allShows = await getShow('movie');
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Record<PropertyKey, string>;
+}) {
+  const allShows = await getShow('tv');
 
   const collections = [
     { title: 'Trending', shows: allShows.trending },
@@ -16,9 +20,11 @@ export default async function Page() {
   return (
     <section>
       <div className="pb-16 pt-10">
-        {/* @ts-expect-error server component */}
         {/* <Hero type="show" shows={allShows.netflix} /> */}
-        <Collections collections={collections} />
+        <Collections
+          collections={collections}
+          searchTerm={searchParams?.search ?? ''}
+        />
       </div>
     </section>
   );
