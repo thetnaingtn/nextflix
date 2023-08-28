@@ -19,6 +19,9 @@ module.exports = {
           '2xl': '1400px',
         },
       },
+      gridTemplateColumns: {
+        footer: 'repeat(auto-fill, minmax(230px, 1fr))',
+      },
     },
   },
   plugins: [],
