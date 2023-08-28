@@ -115,7 +115,7 @@ function SearchInput({
     <input
       type="text"
       className={tm(
-        'text-white bg-[rgba(64,64,64,0.5)] border-solid border border-white h-[30px] text-sm rounded ml-0 p-0 opacity-0 w-0 transition-[width] duration-500 focus:bg-[rgba(0,0,0,0.8)]',
+        'text-white bg-[rgba(64,64,64,0.5)] border-solid border border-white h-[30px] text-sm rounded ml-0 p-0 opacity-0 w-0 transition-[width] duration-500 focus:bg-[rgba(0,0,0,0.8)] focus:outline-0',
         className
       )}
       {...restProps}
