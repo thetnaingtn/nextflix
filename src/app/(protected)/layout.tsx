@@ -7,7 +7,6 @@ import { usePathname } from 'next/navigation';
 
 export default function ProtectedLayout({ children }: PropsWithChildren) {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <div className="flex min-h-screen flex-col">
