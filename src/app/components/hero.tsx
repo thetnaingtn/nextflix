@@ -49,7 +49,9 @@ export default async function Hero(props: HeroProps) {
             <p className="text-green-600">
               {Number(randomShow?.vote_average * 10).toFixed(2) ?? '-'}% Match
             </p>
-            <p className="text-gray-300">{randomShow?.first_air_date ?? '-'}</p>
+            <p className="text-gray-300">
+              {randomShow?.first_air_date ?? randomShow?.release_date ?? '-'}
+            </p>
           </div>
           <p className="line-clamp-4 text-sm text-gray-300 md:text-base">
             {randomShow?.overview ?? '-'}
