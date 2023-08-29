@@ -40,7 +40,7 @@ function Item({
     <div
       {...restProps}
       className={tm(
-        'flex flex-col relative cursor-pointer group first-of-type:ml-14 last-of-type:mr-14',
+        'flex flex-col relative cursor-pointer group first-of-type:ml-14 last-of-type:mr-14 hover:z-[99] hover:scale-[1.3] transition-[transform] duration-200',
         className
       )}
     >
@@ -71,7 +71,10 @@ function Title({
 }: PropsWithChildren<HTMLAttributes<HTMLParagraphElement>>) {
   return (
     <p
-      className={tm(className, 'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0')}
+      className={tm(
+        className,
+        'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0 mb-6'
+      )}
       {...restProps}
     >
       {children}
