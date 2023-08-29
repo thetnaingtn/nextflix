@@ -40,7 +40,7 @@ function Item({
     <div
       {...restProps}
       className={tm(
-        'flex flex-col relative cursor-pointer group first-of-type:ml-14 last-of-type:mr-14 hover:z-[99] hover:scale-[1.3] transition-[transform] duration-200',
+        'flex flex-col relative cursor-pointer group/item first-of-type:ml-14 last-of-type:mr-14 hover:z-[99] hover:scale-[1.3] transition-[transform] duration-200',
         className
       )}
     >
@@ -57,6 +57,24 @@ function Image({
   return (
     <div
       className={tm('border-0 w-[273px] h-auto p-0 m-0', className)}
+      {...restProps}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Meta({
+  children,
+  className,
+  ...restProps
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div
+      className={tm(
+        'hidden absolute bottom-0 p-[10px] bg-[#0000008f] group-hover/item:block',
+        className
+      )}
       {...restProps}
     >
       {children}
@@ -91,8 +109,8 @@ function SubTitle({
     <p
       {...restPorps}
       className={tm(
-        className,
-        'text-xs text-white font-bold my-0 select-none hidden lg:group-hover:block lg:group-hover:z-[100]'
+        'text-xs text-white font-bold my-0 select-none hidden group-hover/item:block',
+        className
       )}
     >
       {children}
@@ -110,7 +128,7 @@ function Text({
       {...restProps}
       className={tm(
         className,
-        'mt-[5px] text-[10px] text-white mb-0 select-none hidden leading-normal lg:group-hover:block lg:group-hover:z-[100]'
+        'mt-[5px] text-[10px] text-white mb-0 select-none hidden leading-normal group-hover/item:block'
       )}
     >
       {children}
@@ -217,6 +235,7 @@ function Maturity({
 export default Object.assign(Card, {
   Group,
   Item,
+  Meta,
   Image,
   Entities,
   Title,
