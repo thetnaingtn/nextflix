@@ -21,7 +21,6 @@ export default async function Collections({
   const searchedResult = await getSearchedResult(searchTerm);
 
   if (searchedResult.results.length > 0) {
-    console.log('here');
     return (
       <Card.Group>
         <Card>
@@ -54,7 +53,7 @@ export default async function Collections({
   }
 
   return (
-    <Card.Group>
+    <Card.Group className="pt-24">
       {collections.map((collection) => (
         <Card key={collection.title}>
           <Card.Title>{collection.title}</Card.Title>

@@ -23,7 +23,7 @@ export default async function Hero(props: HeroProps) {
     const random = Math.floor(Math.random() * props.shows.length);
     let randomShow = props.shows[random];
     banner = randomShow && (
-      <div className="container w-full max-w-screen-2xl">
+      <div className="container w-full max-w-screen-2xl px-14">
         <div className="absolute inset-0 -z-10 h-screen w-full">
           <div
             className={tm(
