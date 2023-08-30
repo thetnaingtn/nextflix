@@ -1,6 +1,9 @@
 import Feature from '../components/feature';
 import OptForm from '@/app/components/opt-form';
 import Hero from '../components/hero';
+import Jumbotron from '../components/jumbotron';
+
+import jumboData from '@/fixtures/jumbo.json';
 
 export default function Page() {
   return (
@@ -24,6 +27,31 @@ export default function Page() {
           </OptForm>
         </Feature>
       </Hero>
+      <Jumbotron.Container>
+        {jumboData.map((jumbo) => {
+          return (
+            <Jumbotron
+              key={jumbo.id}
+              direction={
+                `flex-${jumbo.direction}` as 'flex-row' | 'flex-row-reverse'
+              }
+            >
+              <Jumbotron.Pane>
+                <Jumbotron.Title>{jumbo.title}</Jumbotron.Title>
+                <Jumbotron.SubTitle>{jumbo.subTitle}</Jumbotron.SubTitle>
+              </Jumbotron.Pane>
+              <Jumbotron.Pane>
+                <Jumbotron.Image
+                  src={jumbo.image}
+                  alt={jumbo.alt}
+                  width={450}
+                  height={305}
+                />
+              </Jumbotron.Pane>
+            </Jumbotron>
+          );
+        })}
+      </Jumbotron.Container>
     </section>
   );
 }

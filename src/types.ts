@@ -1,5 +1,6 @@
 import type {
   HTMLAttributes,
+  ImgHTMLAttributes,
   InputHTMLAttributes,
   PropsWithChildren,
 } from 'react';
@@ -13,6 +14,12 @@ export type ParagraphProps = PropsWithChildren<
 >;
 
 export type ButtonProps = PropsWithChildren<HTMLAttributes<HTMLButtonElement>>;
+
+export type HeadingProps = PropsWithChildren<
+  HTMLAttributes<HTMLHeadingElement>
+>;
+
+export type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 export type MediaType = 'tv' | 'movie';
 
