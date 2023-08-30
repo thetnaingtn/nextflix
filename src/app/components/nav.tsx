@@ -1,3 +1,5 @@
+'use client';
+
 import Link, { LinkProps } from 'next/link';
 import { twMerge as tm } from 'tailwind-merge';
 import Image from 'next/image';
