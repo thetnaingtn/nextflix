@@ -1,4 +1,6 @@
+import { LinkProps } from 'next/link';
 import type {
+  ButtonHTMLAttributes,
   HTMLAttributes,
   ImgHTMLAttributes,
   InputHTMLAttributes,
@@ -13,13 +15,19 @@ export type ParagraphProps = PropsWithChildren<
   HTMLAttributes<HTMLParagraphElement>
 >;
 
-export type ButtonProps = PropsWithChildren<HTMLAttributes<HTMLButtonElement>>;
+export type ButtonProps = PropsWithChildren<
+  ButtonHTMLAttributes<HTMLButtonElement>
+>;
 
 export type HeadingProps = PropsWithChildren<
   HTMLAttributes<HTMLHeadingElement>
 >;
 
 export type ImageProps = ImgHTMLAttributes<HTMLImageElement>;
+
+export type TextLinkProps = PropsWithChildren<
+  LinkProps & { className?: string }
+>;
 
 export type MediaType = 'tv' | 'movie';
 
