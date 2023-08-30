@@ -16,7 +16,7 @@ export default function UnprotectedLayout({ children }: PropsWithChildren) {
   // }
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Nav>
         <Nav.Frame>
           <Nav.Logo />
@@ -60,6 +60,6 @@ export default function UnprotectedLayout({ children }: PropsWithChildren) {
         <Footer.Break />
         <Footer.Text>Netflix United Kingdom</Footer.Text>
       </Footer>
-    </>
+    </div>
   );
 }
