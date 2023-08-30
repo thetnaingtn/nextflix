@@ -13,7 +13,7 @@ import {
 import logo from '../../../public/logo.svg';
 import searchIcon from '../../../public/search.png';
 import { usePathname, useRouter } from 'next/navigation';
-import { ButtonProps, InputProps } from '@/types';
+import { ButtonProps, InputProps, TextLinkProps } from '@/types';
 
 function Nav({ children }: PropsWithChildren) {
   return <header>{children}</header>;
@@ -57,9 +57,7 @@ function ButtonLink(props: PropsWithChildren<LinkProps>) {
   );
 }
 
-function TextLink(
-  props: PropsWithChildren<LinkProps & { className?: string }>
-) {
+function TextLink(props: TextLinkProps) {
   const { children, className, ...restProps } = props;
 
   return (
