@@ -1,3 +1,19 @@
+import type {
+  HTMLAttributes,
+  InputHTMLAttributes,
+  PropsWithChildren,
+} from 'react';
+
+export type InputProps = InputHTMLAttributes<HTMLInputElement>;
+
+export type DivProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
+
+export type ParagraphProps = PropsWithChildren<
+  HTMLAttributes<HTMLParagraphElement>
+>;
+
+export type ButtonProps = PropsWithChildren<HTMLAttributes<HTMLButtonElement>>;
+
 export type MediaType = 'tv' | 'movie';
 
 export interface Show {

@@ -77,14 +77,8 @@ export default async function Hero(props: HeroProps) {
     );
   } else {
     banner = (
-      <div className="container w-full max-w-screen-2xl">
+      <div className="w-full max-w-screen-2xl">
         <div className="absolute inset-0 -z-10 h-screen w-full">
-          <div
-            className={tm(
-              'bg-black/60 bg-gradient-to-b from-neutral-900/10 to-neutral-900',
-              'absolute inset-0 z-10 h-full w-full'
-            )}
-          />
           <Image
             src={props.src}
             alt="test"

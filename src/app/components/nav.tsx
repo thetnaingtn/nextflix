@@ -13,6 +13,7 @@ import {
 import logo from '../../../public/logo.svg';
 import searchIcon from '../../../public/search.png';
 import { usePathname, useRouter } from 'next/navigation';
+import { ButtonProps, InputProps } from '@/types';
 
 function Nav({ children }: PropsWithChildren) {
   return <header>{children}</header>;
@@ -114,10 +115,7 @@ function Search({
   );
 }
 
-function SearchInput({
-  className,
-  ...restProps
-}: InputHTMLAttributes<HTMLInputElement>) {
+function SearchInput({ className, ...restProps }: InputProps) {
   return (
     <input
       type="text"
@@ -130,11 +128,7 @@ function SearchInput({
   );
 }
 
-function SearchIcon({
-  className,
-  children,
-  ...restProps
-}: PropsWithChildren<HTMLAttributes<HTMLButtonElement>>) {
+function SearchIcon({ className, children, ...restProps }: ButtonProps) {
   return (
     <button
       className={tm(
