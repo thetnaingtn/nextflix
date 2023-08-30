@@ -2,6 +2,7 @@ import Feature from '../components/feature';
 import OptForm from '@/app/components/opt-form';
 import Hero from '../components/hero';
 import Jumbotron from '../components/jumbotron';
+import Faq from '@/app/components/faq';
 
 import jumboData from '@/fixtures/jumbo.json';
 
@@ -52,6 +53,7 @@ export default function Page() {
           );
         })}
       </Jumbotron.Container>
+      <Faq />
     </section>
   );
 }
