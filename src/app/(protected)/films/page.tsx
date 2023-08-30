@@ -21,7 +21,7 @@ export default async function Page({
 
   return (
     <section>
-      <div className="pb-16 pt-10">
+      <div className="pt-10">
         {!searchParams.search && <Hero type="show" shows={allShows.netflix} />}
         <Collections
           collections={collections}

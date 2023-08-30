@@ -95,7 +95,7 @@ function Footer({
   }
   return (
     <div
-      className={tm('flex m-auto w-[1000px] flex-col', className)}
+      className={tm('flex m-auto w-[1000px] flex-col py-[70px]', className)}
       {...restProps}
     >
       {children}
