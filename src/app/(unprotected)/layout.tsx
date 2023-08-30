@@ -3,6 +3,7 @@
 import { PropsWithChildren } from 'react';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
+import { signOut } from 'next-auth/react';
 
 import Nav from '@/app/components/nav';
 import Footer from '@/app/components/footer';
@@ -21,6 +22,9 @@ export default function UnprotectedLayout({ children }: PropsWithChildren) {
         <Nav.Frame>
           <Nav.Logo />
           <Nav.ButtonLink href="/signin">Sign In</Nav.ButtonLink>
+          <button className="text-white" onClick={() => signOut('Google')}>
+            Sign Out
+          </button>
         </Nav.Frame>
       </Nav>
       {children}

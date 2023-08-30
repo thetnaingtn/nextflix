@@ -9,6 +9,8 @@ export default async function Page({
 }) {
   const allShows = await getShow('movie');
 
+  console.log('re-render');
+
   const collections = [
     { title: 'Trending', shows: allShows.trending },
     { title: 'Top Rated', shows: allShows.topRated },
