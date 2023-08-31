@@ -1,6 +1,5 @@
-import Firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import { getApp, getApps, initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
 
 const config = {
   apiKey: process.env.FIRE_BASE_API_KEY,
@@ -10,6 +9,7 @@ const config = {
   messagingSenderId: process.env.FIRE_BASE_MESSAGING_SENDER_ID,
   appId: process.env.FIRE_BASE_APP_ID,
 };
-const firebase = Firebase.initializeApp(config);
+const app = getApps().length ? getApp() : initializeApp(config);
+const auth = getAuth();
 
-export { firebase };
+export { app, auth };

@@ -1,12 +1,25 @@
 'use client';
-import Form from '@/app/components/form';
-import { useState } from 'react';
 
-export default function Sigin() {
+import { useState } from 'react';
+import { signIn } from 'next-auth/react';
+import Form from '@/app/components/form';
+
+export default function SigIn() {
   const [error, setError] = useState(null);
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
-  const handleSignin = () => null;
+
+  const handleSignin = () => {
+    signIn('credentials', {
+      email: emailAddress,
+      password,
+      redirect: true,
+      callbackUrl: '/series',
+    }).catch((err) => {
+      setError(err.message);
+    });
+  };
+
   return (
     <Form>
       <Form.Title>Sign In</Form.Title>
