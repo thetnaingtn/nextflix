@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { HTMLAttributes, PropsWithChildren, useState } from 'react';
 
 import logo from '../../../../public/logo.svg';
-import searchIcon from '../../../../public/logo.svg';
+import searchIcon from '../../../../public/search.png';
 import { ButtonProps, InputProps, TextLinkProps } from '@/types';
 
 export default function Nav({ children }: PropsWithChildren) {
