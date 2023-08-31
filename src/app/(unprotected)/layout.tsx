@@ -1,28 +1,28 @@
-'use client';
-
 import { PropsWithChildren } from 'react';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 
-import Nav from '@/app/components/nav';
+import { Nav } from '@/app/components/nav';
 import Footer from '@/app/components/footer';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
-export default function UnprotectedLayout({ children }: PropsWithChildren) {
-  // const session = await getServerSession(authOptions);
+export default async function UnprotectedLayout({
+  children,
+}: PropsWithChildren) {
+  const session = await getServerSession(authOptions);
 
-  // if (session?.user) {
-  //   redirect('/series');
-  // }
+  if (session?.user) {
+    redirect('/series');
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Nav>
+      <Nav.default>
         <Nav.Frame>
           <Nav.Logo />
           <Nav.ButtonLink href="/signin">Sign In</Nav.ButtonLink>
         </Nav.Frame>
-      </Nav>
+      </Nav.default>
       {children}
       <Footer>
         <Footer.Title>Questions? Contact us.</Footer.Title>
