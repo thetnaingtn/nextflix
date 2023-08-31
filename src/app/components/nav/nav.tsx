@@ -1,25 +1,20 @@
 'use client';
 
 import Link, { LinkProps } from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 import { twMerge as tm } from 'tailwind-merge';
 import Image from 'next/image';
-import {
-  HTMLAttributes,
-  InputHTMLAttributes,
-  PropsWithChildren,
-  useState,
-} from 'react';
+import { HTMLAttributes, PropsWithChildren, useState } from 'react';
 
-import logo from '../../../public/logo.svg';
-import searchIcon from '../../../public/search.png';
-import { usePathname, useRouter } from 'next/navigation';
+import logo from '../../../../public/logo.svg';
+import searchIcon from '../../../../public/logo.svg';
 import { ButtonProps, InputProps, TextLinkProps } from '@/types';
 
-function Nav({ children }: PropsWithChildren) {
-  return <header>{children}</header>;
+export default function Nav({ children }: PropsWithChildren) {
+  return <nav>{children}</nav>;
 }
 
-function Frame({ children }: PropsWithChildren) {
+export function Frame({ children }: PropsWithChildren) {
   return (
     <div className="flex my-0 mx-14 h-[100px] justify-between items-center">
       {children}
@@ -27,11 +22,11 @@ function Frame({ children }: PropsWithChildren) {
   );
 }
 
-function Group({ children }: PropsWithChildren) {
+export function Group({ children }: PropsWithChildren) {
   return <div className="flex items-center">{children}</div>;
 }
 
-function Logo() {
+export function Logo() {
   return (
     <Link href="/">
       <Image
@@ -45,7 +40,7 @@ function Logo() {
   );
 }
 
-function ButtonLink(props: PropsWithChildren<LinkProps>) {
+export function ButtonLink(props: PropsWithChildren<LinkProps>) {
   const { children, ...rest } = props;
   return (
     <Link
@@ -57,13 +52,15 @@ function ButtonLink(props: PropsWithChildren<LinkProps>) {
   );
 }
 
-function TextLink(props: TextLinkProps) {
+export function TextLink(props: TextLinkProps) {
   const { children, className, ...restProps } = props;
+  const pathname = usePathname();
 
   return (
     <Link
       className={tm(
         'text-white no-underline mr-[30px] font-normal cursor-pointer hover:font-bold last-of-type:mr-0',
+        pathname === props.href ? 'font-bold' : '',
         className ?? ''
       )}
       {...restProps}
@@ -73,7 +70,7 @@ function TextLink(props: TextLinkProps) {
   );
 }
 
-function Search({
+export function Search({
   children,
   className,
   ...restProps
@@ -113,7 +110,7 @@ function Search({
   );
 }
 
-function SearchInput({ className, ...restProps }: InputProps) {
+export function SearchInput({ className, ...restProps }: InputProps) {
   return (
     <input
       type="text"
@@ -139,12 +136,3 @@ function SearchIcon({ className, children, ...restProps }: ButtonProps) {
     </button>
   );
 }
-
-export default Object.assign(Nav, {
-  Logo,
-  ButtonLink,
-  Frame,
-  TextLink,
-  Group,
-  Search,
-});

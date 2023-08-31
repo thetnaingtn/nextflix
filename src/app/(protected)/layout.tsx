@@ -1,37 +1,22 @@
-'use client';
-
-import Nav from '@/app/components/nav';
+import { Nav } from '@/app/components/nav';
 import { PropsWithChildren } from 'react';
 import Footer from '@/app/components/footer';
-import { usePathname } from 'next/navigation';
 
 export default function ProtectedLayout({ children }: PropsWithChildren) {
-  const pathname = usePathname();
-
   return (
     <div className="flex min-h-screen flex-col">
-      <Nav>
+      <Nav.default>
         <Nav.Frame>
           <Nav.Group>
             <Nav.Logo />
-            <Nav.TextLink
-              href="/series"
-              className={pathname === '/series' ? 'font-bold' : ''}
-            >
-              Series
-            </Nav.TextLink>
-            <Nav.TextLink
-              href="/films"
-              className={pathname === '/films' ? 'font-bold' : ''}
-            >
-              Films
-            </Nav.TextLink>
+            <Nav.TextLink href="/series">Series</Nav.TextLink>
+            <Nav.TextLink href="/films">Films</Nav.TextLink>
           </Nav.Group>
           <Nav.Group>
             <Nav.Search />
           </Nav.Group>
         </Nav.Frame>
-      </Nav>
+      </Nav.default>
       <main className="flex-1">{children}</main>
       <Footer>
         <Footer.Title>Questions? Contact us.</Footer.Title>
