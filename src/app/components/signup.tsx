@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 export default function SigUp() {
   const [error, setError] = useState(null);
+  const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const handleSignin = () => null;
@@ -13,7 +14,11 @@ export default function SigUp() {
       {error && <Form.Error data-testid="error">{error}</Form.Error>}
 
       <Form.Base onSubmit={handleSignin} method="POST">
-        <Form.Input placeholder="First Name" />
+        <Form.Input
+          placeholder="First Name"
+          value={firstName}
+          onChange={({ target }) => setFirstName(target.value)}
+        />
         <Form.Input
           placeholder="Email address"
           value={emailAddress}
