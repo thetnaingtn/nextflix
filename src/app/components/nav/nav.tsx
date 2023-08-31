@@ -8,7 +8,8 @@ import { HTMLAttributes, PropsWithChildren, useState } from 'react';
 
 import logo from '../../../../public/logo.svg';
 import searchIcon from '../../../../public/search.png';
-import { ButtonProps, InputProps, TextLinkProps } from '@/types';
+import { ButtonProps, DivProps, InputProps, TextLinkProps } from '@/types';
+import { signOut } from 'next-auth/react';
 
 export default function Nav({ children }: PropsWithChildren) {
   return <nav>{children}</nav>;
@@ -128,6 +129,64 @@ function SearchIcon({ className, children, ...restProps }: ButtonProps) {
     <button
       className={tm(
         'cursor-pointer bg-transparent border-0 outline-0 h-8 w-8 p-0 flex items-center justify-center',
+        className
+      )}
+      {...restProps}
+    >
+      {children}
+    </button>
+  );
+}
+
+export function Profile({ children, className, ...restProps }: DivProps) {
+  return (
+    <div
+      className={tm('group/profile flex items-center ml-5 relative', className)}
+      {...restProps}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function Dropdown({ children, className, ...restProps }: DivProps) {
+  return (
+    <div
+      className={tm(
+        'group-hover/profile:block group-hover/profile:flex-col hidden absolute bg-black p-[10px] w-[100px] top-8 right-[10px]',
+        className
+      )}
+      {...restProps}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function Picture({ className, children, ...restProps }: ButtonProps) {
+  return (
+    <button
+      className={tm(
+        `bg-contain border-0 w-8 h-8 cursor-pointer bg-[url('/user.png')] bg-no-repeat`,
+        className
+      )}
+      {...restProps}
+    >
+      {children}
+    </button>
+  );
+}
+
+export function SignOutButton({
+  className,
+  children,
+  ...restProps
+}: ButtonProps) {
+  return (
+    <button
+      onClick={() => signOut()}
+      className={tm(
+        'bg-transparent outline-none text-white hover:font-bold',
         className
       )}
       {...restProps}

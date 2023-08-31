@@ -1,5 +1,6 @@
-import { Nav } from '@/app/components/nav';
 import { PropsWithChildren } from 'react';
+
+import { Nav } from '@/app/components/nav';
 import Footer from '@/app/components/footer';
 
 export default function ProtectedLayout({ children }: PropsWithChildren) {
@@ -14,6 +15,18 @@ export default function ProtectedLayout({ children }: PropsWithChildren) {
           </Nav.Group>
           <Nav.Group>
             <Nav.Search />
+            <Nav.Profile>
+              <Nav.Picture />
+              <Nav.Dropdown>
+                <Nav.Group>
+                  <Nav.Picture />
+                  <Nav.TextLink href="#">User name</Nav.TextLink>
+                </Nav.Group>
+                <Nav.Group>
+                  <Nav.SignOutButton>Sign Out</Nav.SignOutButton>
+                </Nav.Group>
+              </Nav.Dropdown>
+            </Nav.Profile>
           </Nav.Group>
         </Nav.Frame>
       </Nav.default>
