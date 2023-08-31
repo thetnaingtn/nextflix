@@ -1,19 +1,38 @@
 'use client';
-import Form from '@/app/components/form';
+
 import { useState } from 'react';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signIn } from 'next-auth/react';
+
+import { auth } from '@/lib/firebase';
+import Form from '@/app/components/form';
 
 export default function SigUp() {
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<null | string>(null);
   const [firstName, setFirstName] = useState('');
-  const [emailAddress, setEmailAddress] = useState('');
+  const [email, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
-  const handleSignin = () => null;
+
+  const handleSignUp = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      signIn('credentials', {
+        email,
+        password,
+        redirect: true,
+        callbackUrl: '/series',
+      });
+    } catch (error) {
+      setError((error as Error).message);
+    }
+  };
+
   return (
     <Form>
-      <Form.Title>Sign In</Form.Title>
+      <Form.Title>Sign Up</Form.Title>
       {error && <Form.Error data-testid="error">{error}</Form.Error>}
 
-      <Form.Base onSubmit={handleSignin} method="POST">
+      <Form.Base onSubmit={handleSignUp} method="POST">
         <Form.Input
           placeholder="First Name"
           value={firstName}
@@ -21,7 +40,7 @@ export default function SigUp() {
         />
         <Form.Input
           placeholder="Email address"
-          value={emailAddress}
+          value={email}
           onChange={({ target }) => setEmailAddress(target.value)}
         />
         <Form.Input
@@ -32,7 +51,7 @@ export default function SigUp() {
           onChange={({ target }) => setPassword(target.value)}
         />
         <Form.Submit type="submit" data-testid="sign-in">
-          Sign In
+          Sign Up
         </Form.Submit>
       </Form.Base>
       <Form.Text>
