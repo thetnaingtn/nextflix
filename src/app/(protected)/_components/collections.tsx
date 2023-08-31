@@ -29,7 +29,7 @@ export default async function Collections({
     return (
       <Card.Group>
         <Card>
-          <Card.Entities className="flex-wrap justify-center gap-y-12">
+          <Card.Entities className="flex flex-wrap gap-[5px] justify-center">
             {searchedResult.results.map((show) => {
               const src = getSafeImageUrl(show.backdrop_path);
               return (
@@ -37,14 +37,13 @@ export default async function Collections({
                   className="first-of-type:ml-0 last-of-type:mr-0"
                   key={show.id}
                 >
-                  <Card.Image>
-                    <Image
-                      width={305}
-                      height={200}
-                      src={src}
-                      alt={show.title ?? 'show-image'}
-                    />
-                  </Card.Image>
+                  <Image
+                    width={305}
+                    height={200}
+                    className="w-full cursor-pointer height-auto p-0 m-0 border-0"
+                    src={src}
+                    alt={show.title ?? 'show-image'}
+                  />
                   <Card.Meta>
                     <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
                     <Card.Text>
@@ -73,15 +72,18 @@ export default async function Collections({
               .map((show) => {
                 const src = getSafeImageUrl(show.backdrop_path);
                 return (
-                  <Card.Item data-testid="item" key={show.id}>
-                    <Card.Image>
-                      <Image
-                        width={305}
-                        height={200}
-                        src={src}
-                        alt={show.title ?? 'show-image'}
-                      />
-                    </Card.Image>
+                  <Card.Item
+                    className="max-w-[305px] w-full"
+                    data-testid="item"
+                    key={show.id}
+                  >
+                    <Image
+                      width={305}
+                      height={200}
+                      className="w-full cursor-pointer height-auto p-0 m-0 border-0"
+                      src={src}
+                      alt={show.title ?? 'show-image'}
+                    />
                     <Card.Meta>
                       <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
                       <Card.Text>
