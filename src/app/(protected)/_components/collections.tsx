@@ -14,23 +14,21 @@ interface Collection {
 
 interface CollectionsProps {
   collections: Collection[];
-  searchTerm?: string;
+  searchedResults: Show[];
 }
 
 const TRUNCATE_OPTIONS = { length: 149 };
 
 export default async function Collections({
   collections,
-  searchTerm = '',
+  searchedResults,
 }: CollectionsProps) {
-  const searchedResult = await getSearchedResult(searchTerm);
-
-  if (searchedResult.results.length > 0) {
+  if (searchedResults.length > 0) {
     return (
       <Card.Group>
         <Card>
           <Card.Entities className="flex-wrap justify-center gap-y-12">
-            {searchedResult.results.map((show) => {
+            {searchedResults.map((show) => {
               const src = getSafeImageUrl(show.backdrop_path);
               return (
                 <Card.Item
