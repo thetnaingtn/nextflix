@@ -2,9 +2,9 @@ import type { MediaType, Show } from '../types';
 
 export async function getShow(mediaType: MediaType) {
   const [
-    netflixRes,
     trendingRes,
     topRatedRes,
+    netflixRes,
     actionRes,
     comedyRes,
     horrorRes,
