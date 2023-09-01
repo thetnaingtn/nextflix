@@ -80,7 +80,7 @@ export async function getSearchedResult(searchTerm: string) {
   }&query=${encodeURIComponent(searchTerm)}`;
 
   const resp = await fetch(url);
-  const shows = await resp.json();
+  const shows = (await resp.json()) as { results: Show[] };
 
-  return shows as { results: Show[] };
+  return shows.results.sort((s1, s2) => s2.vote_count - s1.vote_count);
 }
