@@ -76,7 +76,7 @@ function Title({
     <p
       className={tm(
         className,
-        'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0 mb-6'
+        'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0 mb-6 max-[1000px]:ml-[30px]'
       )}
       {...restProps}
     >
