@@ -20,7 +20,10 @@ function Row({
 }: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
   return (
     <div
-      className={tm('grid gap-[15px] grid-cols-footer', className)}
+      className={tm(
+        'grid gap-[15px] grid-cols-footer max-[1000px]:grid-cols-[repeat(auto-fill,minmax(150px,1fr))]',
+        className
+      )}
       {...restProps}
     >
       {children}
@@ -90,15 +93,17 @@ function Footer({
   className,
   ...restProps
 }: PropsWithChildren<HTMLAttributes<HTMLElement>>) {
-  {
-    /* max-w-[1000px] has layout error. use w-[1000px] for now. */
-  }
   return (
-    <div
-      className={tm('flex m-auto w-[1000px] flex-col py-[70px]', className)}
-      {...restProps}
-    >
-      {children}
+    <div className="w-full">
+      <footer
+        className={tm(
+          'flex max-w-[1000px] flex-col py-[70px] max-[1000px]:py-[70px] max-[1000px]:px-[30px] m-auto',
+          className
+        )}
+        {...restProps}
+      >
+        {children}
+      </footer>
     </div>
   );
 }
