@@ -1,11 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import _truncate from 'lodash.truncate';
 import _shuffle from 'lodash.shuffle';
+import { useState } from 'react';
 
 import Card from '@/app/components/card';
 import { Show } from '../../../types';
-import { getSearchedResult } from '@/lib/fetcher';
 import { getSafeImageUrl } from '@/lib/util';
+import ShowModal from './show-modal';
 
 interface Collection {
   title: string;
@@ -14,23 +17,24 @@ interface Collection {
 
 interface CollectionsProps {
   collections: Collection[];
-  searchTerm?: string;
+  searchedResults: Show[];
 }
 
 const TRUNCATE_OPTIONS = { length: 149 };
 
-export default async function Collections({
+export default function Collections({
   collections,
-  searchTerm = '',
+  searchedResults,
 }: CollectionsProps) {
-  const searchedResult = await getSearchedResult(searchTerm);
+  const [toggleModal, setToggleModal] = useState(false);
+  const [selectedShow, setSelectedShow] = useState<Show>({} as Show);
 
-  if (searchedResult.results.length > 0) {
+  if (searchedResults.length > 0) {
     return (
       <Card.Group>
         <Card>
-          <Card.Entities className="flex flex-wrap gap-[5px] justify-center">
-            {searchedResult.results.map((show) => {
+          <Card.Entities className="flex-wrap justify-center gap-y-12">
+            {searchedResults.map((show) => {
               const src = getSafeImageUrl(show.backdrop_path);
               return (
                 <Card.Item
@@ -55,7 +59,6 @@ export default async function Collections({
             })}
           </Card.Entities>
         </Card>
-        ;
       </Card.Group>
     );
   }
@@ -67,35 +70,42 @@ export default async function Collections({
           <Card.Title>{collection.title}</Card.Title>
           <Card.Entities>
             {/* temporarily cut off shows */}
-            {_shuffle(collection.shows)
-              .slice(0, 5)
-              .map((show) => {
-                const src = getSafeImageUrl(show.backdrop_path);
-                return (
-                  <Card.Item
-                    className="max-w-[305px] w-full"
-                    data-testid="item"
-                    key={show.id}
-                  >
-                    <Image
-                      width={305}
-                      height={200}
-                      className="w-full cursor-pointer height-auto p-0 m-0 border-0"
-                      src={src}
-                      alt={show.title ?? 'show-image'}
-                    />
-                    <Card.Meta>
-                      <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
-                      <Card.Text>
-                        {_truncate(show.overview ?? '', TRUNCATE_OPTIONS)}
-                      </Card.Text>
-                    </Card.Meta>
-                  </Card.Item>
-                );
-              })}
+            {collection.shows.slice(0, 5).map((show) => {
+              const src = getSafeImageUrl(show.backdrop_path);
+              return (
+                <Card.Item
+                  onClick={() => {
+                    setToggleModal(true);
+                    setSelectedShow(show);
+                  }}
+                  className="max-w-[305px] w-full"
+                  data-testid="item"
+                  key={show.id}
+                >
+                  <Image
+                    width={305}
+                    height={200}
+                    src={src}
+                    className="w-full cursor-pointer height-auto p-0 m-0 border-0"
+                    alt={show.title ?? 'show-image'}
+                  />
+                  <Card.Meta>
+                    <Card.SubTitle>{show.title ?? show.name}</Card.SubTitle>
+                    <Card.Text>
+                      {_truncate(show.overview ?? '', TRUNCATE_OPTIONS)}
+                    </Card.Text>
+                  </Card.Meta>
+                </Card.Item>
+              );
+            })}
           </Card.Entities>
         </Card>
       ))}
+      <ShowModal
+        show={selectedShow}
+        toggle={toggleModal}
+        toggleHandler={setToggleModal}
+      />
     </Card.Group>
   );
 }

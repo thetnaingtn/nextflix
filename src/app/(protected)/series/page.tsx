@@ -1,5 +1,5 @@
 import Hero from '@/app/components/hero';
-import { getShow } from '@/lib/fetcher';
+import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '../_components/collections';
 
 export default async function Page({
@@ -8,6 +8,7 @@ export default async function Page({
   searchParams: Record<PropertyKey, string>;
 }) {
   const allShows = await getShow('tv');
+  const searchedResults = await getSearchedResult(searchParams?.search ?? '');
 
   const collections = [
     { title: 'Trending', shows: allShows.trending },
@@ -20,10 +21,12 @@ export default async function Page({
   return (
     <section>
       <div className="pt-10">
-        {!searchParams.search && <Hero type="show" shows={allShows.netflix} />}
+        {searchedResults.length < 1 && (
+          <Hero type="show" shows={allShows.netflix} />
+        )}
         <Collections
           collections={collections}
-          searchTerm={searchParams?.search ?? ''}
+          searchedResults={searchedResults}
         />
       </div>
     </section>
