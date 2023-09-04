@@ -42,12 +42,8 @@ export default function Page() {
                 <Jumbotron.SubTitle>{jumbo.subTitle}</Jumbotron.SubTitle>
               </Jumbotron.Pane>
               <Jumbotron.Pane>
-                <Jumbotron.Image
-                  src={jumbo.image}
-                  alt={jumbo.alt}
-                  width={450}
-                  height={305}
-                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={jumbo.image} alt={jumbo.alt} className="max-w-full" />
               </Jumbotron.Pane>
             </Jumbotron>
           );

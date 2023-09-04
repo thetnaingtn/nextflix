@@ -38,7 +38,7 @@ function Button({ children, className, ...restProps }: ButtonProps) {
   return (
     <button
       className={tm(
-        'flex items-center h-[70px] bg-[#e50914] text-white uppercase py-0 px-8 text-[26px] cursor-pointer border-0 hover:bg-[#f40612]',
+        'flex items-center h-[70px] bg-[#e50914] text-white uppercase py-0 px-8 text-[26px] cursor-pointer border-0 hover:bg-[#f40612] max-[1000px]:h-[50px] max-[1000px]:text-base max-[1000px]:mt-5 max-[1000px]:font-bold',
         className
       )}
       {...restProps}
@@ -46,7 +46,7 @@ function Button({ children, className, ...restProps }: ButtonProps) {
       {children}
       <Image
         src="/chevron-right.png"
-        className="icon ml-[10px]"
+        className="icon ml-[10px] max-[1000px] max-[1000px]:w-4"
         width={24}
         height={24}
         alt="try now"
@@ -59,7 +59,7 @@ function Text({ children, className, ...restProps }: ParagraphProps) {
   return (
     <p
       className={tm(
-        'text-[19.2px] text-white text-center my-[19.2px]',
+        'text-[19.2px] text-white text-center my-[19.2px] max-[600px]:text-base max-[600px]:leading-[22px]',
         className
       )}
       {...restProps}

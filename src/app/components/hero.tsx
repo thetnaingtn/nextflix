@@ -17,7 +17,7 @@ type HeroProps =
       children: React.ReactNode;
     };
 
-export default async function Hero(props: HeroProps) {
+export default async function Hero(props: HeroProps & { className?: string }) {
   let banner!: JSX.Element;
   if (props.type === 'show') {
     const random = Math.floor(Math.random() * props.shows.length);
@@ -78,7 +78,12 @@ export default async function Hero(props: HeroProps) {
   } else {
     banner = (
       <div className="w-full max-w-screen-2xl">
-        <div className="absolute inset-0 -z-10 h-screen w-full">
+        <div
+          className={tm(
+            'absolute inset-0 -z-10 h-screen w-full',
+            props.className ?? ''
+          )}
+        >
           <Image
             src={props.src}
             alt="test"
