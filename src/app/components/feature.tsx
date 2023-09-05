@@ -9,7 +9,7 @@ function Feature({
   return (
     <div
       className={tm(
-        'flex flex-col border-solid border-x-0 border-b-8 border-[#222] text-center py-[165px] px-[45px]',
+        'flex flex-col border-solid border-x-0 border-b-8 border-[#222] text-center py-[133px] min-[720px]:py-[122px] min-[1000px]:py-[157px] min-[645px]:py-[111px] px-[45px]',
         className
       )}
       {...restProps}

@@ -6,7 +6,10 @@ import { ButtonProps, DivProps, InputProps, ParagraphProps } from '@/types';
 function OptForm({ children, className, ...restProps }: DivProps) {
   return (
     <div
-      className={tm('flex justify-center h-full mt-5 flex-wrap', className)}
+      className={tm(
+        'flex justify-center h-full mt-5 flex-wrap max-[1000px]:flex-col max-[1000px]:items-center',
+        className
+      )}
       {...restProps}
     >
       {children}

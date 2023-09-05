@@ -17,7 +17,7 @@ export default function Nav({ children }: PropsWithChildren) {
 
 export function Frame({ children }: PropsWithChildren) {
   return (
-    <div className="flex my-0 mx-14 h-[100px] justify-between items-center">
+    <div className="flex my-0 mx-[30px] lg:mx-14 h-[100px] justify-between items-center">
       {children}
     </div>
   );

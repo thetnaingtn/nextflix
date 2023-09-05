@@ -9,7 +9,11 @@ import jumboData from '@/fixtures/jumbo.json';
 export default function Page() {
   return (
     <section>
-      <Hero type="static" src="/home-bg.jpg">
+      <Hero
+        className="min-[601px]:h-[114vh] sm:h-screen"
+        type="static"
+        src="/home-bg.jpg"
+      >
         <Feature className="leading-[1.15]">
           <Feature.Title>
             Unlimited films, TV programmes and more.
