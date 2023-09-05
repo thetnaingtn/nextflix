@@ -6,7 +6,7 @@ import _shuffle from 'lodash.shuffle';
 import { useState } from 'react';
 
 import Card from '@/app/ui/card';
-import { Show } from '../../../types';
+import { Show } from '../../types';
 import { getSafeImageUrl } from '@/lib/util';
 import ShowModal from './show-modal';
 
