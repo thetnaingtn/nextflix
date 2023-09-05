@@ -11,6 +11,7 @@ import {
   DialogDescription,
 } from '@/app/components/dialog';
 import type { Show } from '@/types';
+import { usePathname } from 'next/navigation';
 
 interface ShowModalProps {
   show: Show;
@@ -25,16 +26,16 @@ export default function ShowModal({
 }: ShowModalProps) {
   const [trailer, setTrailer] = useState('');
   const [genres, setGenres] = useState<{ id: number; name: string }[]>([]);
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (!toggle) return;
+    let mediaType = show?.media_type;
+    if (!mediaType) {
+      mediaType = pathname === '/series' ? 'tv' : 'movie';
+    }
     (async function () {
       const resp = await fetch(
-        `https://api.themoviedb.org/3/${
-          show?.media_type === 'tv' ? 'tv' : 'movie'
-        }/${show?.id}?api_key=${
-          process.env.NEXT_PUBLIC_TMDB_API_KEY
-        }&language=en-US&append_to_response=videos`
+        `https://api.themoviedb.org/3/${mediaType}/${show?.id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=videos`
       );
       const data = await resp.json();
       console.log(data);
@@ -48,7 +49,7 @@ export default function ShowModal({
         setGenres(data?.genres);
       }
     })();
-  }, [show.id, show.media_type, toggle]);
+  }, [show.id, show.media_type, toggle, pathname]);
 
   return (
     <Dialog open={toggle} onOpenChange={toggleHandler}>

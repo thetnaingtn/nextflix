@@ -40,24 +40,9 @@ function Item({
     <div
       {...restProps}
       className={tm(
-        'flex flex-col relative cursor-pointer group/item first-of-type:ml-14 last-of-type:mr-14 hover:z-[99] hover:scale-[1.3] transition-[transform] duration-200',
+        'flex flex-col relative cursor-pointer group/item first-of-type:ml-14 last-of-type:mr-14 hover:z-[99] hover:scale-[1.3] transition-[transform] duration-200 max-[1000px]:first-of-type:ml-[30px] max-[1000px]:last-of-type:mr-[30px]',
         className
       )}
-    >
-      {children}
-    </div>
-  );
-}
-
-function Image({
-  children,
-  className,
-  ...restProps
-}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
-  return (
-    <div
-      className={tm('border-0 w-[273px] h-auto p-0 m-0', className)}
-      {...restProps}
     >
       {children}
     </div>
@@ -72,7 +57,7 @@ function Meta({
   return (
     <div
       className={tm(
-        'hidden absolute bottom-0 p-[10px] bg-[#0000008f] group-hover/item:block',
+        'hidden absolute bottom-0 p-[10px] bg-[#0000008f] xl:group-hover/item:block',
         className
       )}
       {...restProps}
@@ -91,7 +76,7 @@ function Title({
     <p
       className={tm(
         className,
-        'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0 mb-6'
+        'text-2xl text-[#e5e5e5] font-bold mx-14 mt-0 mb-6 max-[1000px]:ml-[30px]'
       )}
       {...restProps}
     >
@@ -109,7 +94,7 @@ function SubTitle({
     <p
       {...restPorps}
       className={tm(
-        'text-xs text-white font-bold my-0 select-none hidden group-hover/item:block',
+        'text-xs text-white font-bold my-0 select-none hidden xl:group-hover/item:block',
         className
       )}
     >
@@ -128,7 +113,7 @@ function Text({
       {...restProps}
       className={tm(
         className,
-        'mt-[5px] text-[10px] text-white mb-0 select-none hidden leading-normal group-hover/item:block'
+        'mt-[5px] text-[10px] text-white mb-0 select-none hidden leading-normal xl:group-hover/item:block'
       )}
     >
       {children}
@@ -236,7 +221,6 @@ export default Object.assign(Card, {
   Group,
   Item,
   Meta,
-  Image,
   Entities,
   Title,
   SubTitle,

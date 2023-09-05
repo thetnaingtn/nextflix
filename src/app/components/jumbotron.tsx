@@ -19,7 +19,7 @@ function Jumbotron({
     >
       <div
         className={tm(
-          'flex items-center justify-center max-w-[1100px] m-auto w-full',
+          'flex items-center justify-between max-w-[1100px] m-auto w-full max-[1000px]:flex-col',
           direction
         )}
       >
@@ -40,7 +40,10 @@ function Container({ children, className, ...restProps }: DivProps) {
 function Title({ children, className, ...restProps }: HeadingProps) {
   return (
     <h1
-      className={tm('text-[50px] leading-[1.1] mb-2', className)}
+      className={tm(
+        'text-[50px] leading-[1.1] mb-2 max-[600px]:text-[35px]',
+        className
+      )}
       {...restProps}
     >
       {children}
@@ -51,7 +54,10 @@ function Title({ children, className, ...restProps }: HeadingProps) {
 function SubTitle({ children, className, ...restProps }: HeadingProps) {
   return (
     <h2
-      className={tm('text-[26px] font-normal leading-normal', className)}
+      className={tm(
+        'text-[26px] font-normal leading-normal max-[600px]:text-[18px] my-5',
+        className
+      )}
       {...restProps}
     >
       {children}
@@ -61,7 +67,13 @@ function SubTitle({ children, className, ...restProps }: HeadingProps) {
 
 function Pane({ children, className, ...restProps }: DivProps) {
   return (
-    <div className={tm('w-1/2', className)} {...restProps}>
+    <div
+      className={tm(
+        'w-1/2 max-[1000px]:w-full max-[1000px]:py-0 max-[1000px]:px-[45px] max-[1000px]:text-center',
+        className
+      )}
+      {...restProps}
+    >
       {children}
     </div>
   );
@@ -69,7 +81,7 @@ function Pane({ children, className, ...restProps }: DivProps) {
 
 function Image({ className, ...restProps }: ImageProps) {
   return (
-    <NextImage className={tm('h-auto max-w-full', className)} {...restProps} />
+    <NextImage className={tm('max-w-full h-auto', className)} {...restProps} />
   );
 }
 
