@@ -71,9 +71,9 @@ export default function ShowModal({
               Match
             </p>
             {show?.release_date ? (
-              <p>{show?.release_date}</p>
+              <p className="text-white">{show?.release_date}</p>
             ) : show?.first_air_date ? (
-              <p>{show?.first_air_date}</p>
+              <p className="text-white">{show?.first_air_date}</p>
             ) : null}
             {show?.original_language && (
               <span className="grid h-4 w-7 place-items-center text-xs font-bold text-neutral-400 ring-1 ring-neutral-400">
