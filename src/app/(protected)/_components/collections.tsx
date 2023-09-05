@@ -102,6 +102,7 @@ export default function Collections({
         </Card>
       ))}
       <ShowModal
+        key={selectedShow.id}
         show={selectedShow}
         toggle={toggleModal}
         toggleHandler={setToggleModal}
