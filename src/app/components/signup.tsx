@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { signIn } from 'next-auth/react';
 
 import { auth } from '@/lib/firebase';
@@ -15,7 +15,8 @@ export default function SigUp() {
 
   const handleSignUp = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(user.user, { displayName: firstName });
       signIn('credentials', {
         email,
         password,

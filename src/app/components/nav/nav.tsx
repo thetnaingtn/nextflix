@@ -60,7 +60,7 @@ export function TextLink(props: TextLinkProps) {
   return (
     <Link
       className={tm(
-        'text-white no-underline mr-[30px] font-normal cursor-pointer hover:font-bold last-of-type:mr-0',
+        'text-white no-underline mr-[30px] font-normal cursor-pointer last-of-type:mr-0',
         pathname === props.href ? 'font-bold' : '',
         className ?? ''
       )}
@@ -153,7 +153,7 @@ export function Dropdown({ children, className, ...restProps }: DivProps) {
   return (
     <div
       className={tm(
-        'group-hover/profile:block group-hover/profile:flex-col hidden absolute bg-black p-[10px] w-[100px] top-8 right-[10px]',
+        'group-hover/profile:block group-hover/profile:flex-col hidden absolute bg-black p-[10px] top-8 right-[10px]',
         className
       )}
       {...restProps}

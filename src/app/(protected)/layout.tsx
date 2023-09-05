@@ -2,8 +2,11 @@ import { PropsWithChildren } from 'react';
 
 import { Nav } from '@/app/components/nav';
 import Footer from '@/app/components/footer';
+import { getServerSession } from 'next-auth';
 
-export default function ProtectedLayout({ children }: PropsWithChildren) {
+export default async function ProtectedLayout({ children }: PropsWithChildren) {
+  const session = await getServerSession();
+
   return (
     <div className="flex min-h-screen flex-col">
       <Nav.default>
@@ -19,8 +22,8 @@ export default function ProtectedLayout({ children }: PropsWithChildren) {
               <Nav.Picture />
               <Nav.Dropdown>
                 <Nav.Group>
-                  <Nav.Picture />
-                  <Nav.TextLink href="#">User name</Nav.TextLink>
+                  <Nav.Picture className="mr-3" />
+                  <Nav.TextLink href="#">{session?.user?.email}</Nav.TextLink>
                 </Nav.Group>
                 <Nav.Group>
                   <Nav.SignOutButton>Sign Out</Nav.SignOutButton>
