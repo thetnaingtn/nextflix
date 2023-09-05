@@ -1,5 +1,5 @@
-import Hero from '@/app/components/hero';
-import SignUp from '@/app/components/signup';
+import Hero from '@/app/ui/hero';
+import SignUp from '@/app/ui/signup';
 
 export default function Page() {
   return (

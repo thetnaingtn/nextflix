@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { twMerge as tm } from 'tailwind-merge';
 
-import PlayIcon from '@/app/components/icons/play';
-import ExclamationCircleIcon from '@/app/components/icons/exclamation-circle';
+import PlayIcon from '@/app/ui/icons/play';
+import ExclamationCircleIcon from '@/app/ui/icons/exclamation-circle';
 
 import type { Show } from '@/types';
 import ShowModal from '../(protected)/_components/show-modal';

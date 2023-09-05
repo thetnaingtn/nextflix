@@ -1,4 +1,4 @@
-import Hero from '@/app/components/hero';
+import Hero from '@/app/ui/hero';
 import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '../_components/collections';
 import { getRandomShow } from '@/lib/util';

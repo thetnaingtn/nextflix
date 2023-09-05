@@ -1,5 +1,5 @@
-import Hero from '@/app/components/hero';
-import SignIn from '@/app/components/sigin';
+import Hero from '@/app/ui/hero';
+import SignIn from '@/app/ui/sigin';
 
 export default function Page() {
   return (
