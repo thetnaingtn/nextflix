@@ -1,4 +1,5 @@
 import 'server-only';
+import _shuffle from 'lodash.shuffle';
 import type { MediaType, Show } from '../types';
 
 export async function getShow(mediaType: MediaType) {
@@ -64,14 +65,14 @@ export async function getShow(mediaType: MediaType) {
     ])) as { results: Show[] }[];
 
   return {
-    trending: trending?.results,
-    topRated: topRated?.results,
+    trending: _shuffle(trending?.results),
+    topRated: _shuffle(topRated?.results),
     netflix: netflix?.results,
-    action: action?.results,
-    comedy: comedy?.results,
-    horror: horror?.results,
-    romance: romance?.results,
-    docs: docs?.results,
+    action: _shuffle(action?.results),
+    comedy: _shuffle(comedy?.results),
+    horror: _shuffle(horror?.results),
+    romance: _shuffle(romance?.results),
+    docs: _shuffle(docs?.results),
   };
 }
 
