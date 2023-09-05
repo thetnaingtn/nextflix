@@ -1,6 +1,6 @@
 import Hero from '@/app/components/hero';
 import { getSearchedResult, getShow } from '@/lib/fetcher';
-import Collections from '../_components/collections';
+import Collections from '../../components/collections';
 import { getRandomShow } from '@/lib/util';
 
 export default async function Page({

@@ -1,8 +1,8 @@
-import Feature from '../components/feature';
-import OptForm from '@/app/components/opt-form';
+import Feature from '../ui/feature';
+import OptForm from '@/app/ui/opt-form';
 import Hero from '../components/hero';
-import Jumbotron from '../components/jumbotron';
-import Faq from '@/app/components/faq';
+import Jumbotron from '../ui/jumbotron';
+import Faq from '@/app/ui/faq';
 
 import jumboData from '@/fixtures/jumbo.json';
 

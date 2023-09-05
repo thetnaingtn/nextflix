@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import Form from '@/app/components/form';
+import Form from '@/app/ui/form';
 
 export default function SigIn() {
   const [error, setError] = useState(null);

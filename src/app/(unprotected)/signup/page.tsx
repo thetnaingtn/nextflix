@@ -1,11 +1,11 @@
 import Hero from '@/app/components/hero';
-import SignUp from '@/app/components/signup';
+import SignUpForm from '@/app/components/signup-form';
 
 export default function Page() {
   return (
     <div>
       <Hero className="h-[116vh]" type="static" src="/home-bg.jpg">
-        <SignUp />
+        <SignUpForm />
       </Hero>
     </div>
   );

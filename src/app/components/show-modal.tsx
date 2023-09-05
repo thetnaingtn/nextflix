@@ -9,7 +9,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
-} from '@/app/components/dialog';
+} from '@/app/ui/dialog';
 import type { Show } from '@/types';
 import { usePathname } from 'next/navigation';
 

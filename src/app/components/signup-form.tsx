@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { signIn } from 'next-auth/react';
 
 import { auth } from '@/lib/firebase';
-import Form from '@/app/components/form';
+import Form from '@/app/ui/form';
 
 export default function SigUp() {
   const [error, setError] = useState<null | string>(null);
