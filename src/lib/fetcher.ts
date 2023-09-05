@@ -1,3 +1,4 @@
+import 'server-only';
 import type { MediaType, Show } from '../types';
 
 export async function getShow(mediaType: MediaType) {
