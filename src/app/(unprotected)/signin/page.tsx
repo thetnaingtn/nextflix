@@ -1,4 +1,4 @@
-import Hero from '@/app/ui/hero';
+import Hero from '@/app/components/hero';
 import SignInForm from '@/app/components/sigin-form';
 
 export default function Page() {

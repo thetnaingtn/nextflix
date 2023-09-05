@@ -7,7 +7,7 @@ import PlayIcon from '@/app/ui/icons/play';
 import ExclamationCircleIcon from '@/app/ui/icons/exclamation-circle';
 
 import type { Show } from '@/types';
-import ShowModal from '../components/show-modal';
+import ShowModal from './show-modal';
 import { useState } from 'react';
 
 type HeroProps =

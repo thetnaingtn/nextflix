@@ -1,6 +1,6 @@
 import Feature from '../ui/feature';
 import OptForm from '@/app/ui/opt-form';
-import Hero from '../ui/hero';
+import Hero from '../components/hero';
 import Jumbotron from '../ui/jumbotron';
 import Faq from '@/app/ui/faq';
 
