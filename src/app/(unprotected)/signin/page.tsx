@@ -1,11 +1,11 @@
 import Hero from '@/app/ui/hero';
-import SignIn from '@/app/ui/sigin';
+import SignInForm from '@/app/components/sigin-form';
 
 export default function Page() {
   return (
     <div>
       <Hero type="static" src="/home-bg.jpg" className="h-[116vh]">
-        <SignIn />
+        <SignInForm />
       </Hero>
     </div>
   );
