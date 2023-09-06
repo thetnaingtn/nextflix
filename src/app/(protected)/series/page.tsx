@@ -3,6 +3,8 @@ import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '../../components/collections';
 import { getRandomShow } from '@/lib/util';
 
+export const dynamic = 'force-static';
+
 export default async function Page({
   searchParams,
 }: {
