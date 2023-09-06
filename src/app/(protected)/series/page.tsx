@@ -2,8 +2,13 @@ import Hero from '@/app/components/hero';
 import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '../../components/collections';
 import { getRandomShow } from '@/lib/util';
+import { Metadata } from 'next';
 
 export const dynamic = 'force-static';
+
+export const metadata: Metadata = {
+  title: 'Nerdflix | Series',
+};
 
 export default async function Page({
   searchParams,
