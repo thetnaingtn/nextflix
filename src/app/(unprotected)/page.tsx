@@ -10,7 +10,7 @@ export default function Page() {
   return (
     <section>
       <Hero
-        className="min-[601px]:h-[114vh] sm:h-screen"
+        className="min-[601px]:h-[114vh] min-[645px]:h-screen"
         type="static"
         src="/home-bg.jpg"
       >
