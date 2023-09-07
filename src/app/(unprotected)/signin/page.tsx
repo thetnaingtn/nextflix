@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Nerdflix | Sign In',
+  description: 'Sign in to see thousands of series and movies',
 };
 
 export default function Page() {
