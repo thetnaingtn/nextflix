@@ -10,6 +10,8 @@ import type { Show } from '@/types';
 import ShowModal from './show-modal';
 import { useState } from 'react';
 
+import homeBg from '../../../public/image/home-bg.jpg';
+
 type HeroProps =
   | {
       type: 'show';
@@ -45,7 +47,7 @@ export default function Hero(props: HeroProps & { className?: string }) {
                 props.show?.backdrop_path ?? props.show?.poster_path ?? ''
               }`}
               alt={props.show?.title ?? 'poster'}
-              className="h-auto w-full object-cover"
+              className="h-screen w-full object-cover"
               fill
               priority
             />
@@ -102,7 +104,7 @@ export default function Hero(props: HeroProps & { className?: string }) {
           )}
         >
           <Image
-            src={props.src}
+            src={homeBg}
             alt="test"
             className="h-auto w-full object-cover"
             fill

@@ -1,19 +1,19 @@
 import { PropsWithChildren } from 'react';
-import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
+// import { redirect } from 'next/navigation';
+// import { getServerSession } from 'next-auth';
 
 import { Nav } from '@/app/ui/nav';
 import Footer from '@/app/ui/footer';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+// import { authOptions } from '../api/auth/[...nextauth]/route';
 
 export default async function UnprotectedLayout({
   children,
 }: PropsWithChildren) {
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
-  if (session?.user) {
-    redirect('/series');
-  }
+  // if (session?.user) {
+  //   redirect('/series');
+  // }
 
   return (
     <div className="flex min-h-screen flex-col">
