@@ -6,8 +6,8 @@ import { twMerge as tm } from 'tailwind-merge';
 import Image from 'next/image';
 import { HTMLAttributes, PropsWithChildren, useState } from 'react';
 
-import logo from '../../../../public/logo.svg';
-import searchIcon from '../../../../public/search.png';
+import logo from '../../../../public/image/logo.svg';
+import searchIcon from '../../../../public/image/search.png';
 import { ButtonProps, DivProps, InputProps, TextLinkProps } from '@/types';
 import { signOut } from 'next-auth/react';
 
