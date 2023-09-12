@@ -4,8 +4,6 @@ import Collections from '../../components/collections';
 import { getRandomShow } from '@/lib/util';
 import { Metadata } from 'next';
 
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
   title: 'Nerdflix | Films',
 };

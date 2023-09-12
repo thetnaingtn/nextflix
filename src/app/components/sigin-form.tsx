@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEventHandler, useState } from 'react';
 import { signIn } from 'next-auth/react';
 import Form from '@/app/ui/form';
 
@@ -9,7 +9,8 @@ export default function SigIn() {
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignin = () => {
+  const handleSignin: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
     signIn('credentials', {
       email: emailAddress,
       password,

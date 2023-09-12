@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { FormEventHandler, useState } from 'react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { signIn } from 'next-auth/react';
 
@@ -13,7 +13,8 @@ export default function SigUp() {
   const [email, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = async () => {
+  const handleSignUp: FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
     try {
       const user = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(user.user, { displayName: firstName });
