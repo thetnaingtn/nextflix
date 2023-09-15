@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3333",
-    "build": "next build",
+    "build": "nx exec -- next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "nx exec -- next lint"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
@@ -33,6 +33,16 @@
   "devDependencies": {
     "@types/lodash.shuffle": "^4.2.7",
     "@types/lodash.truncate": "^4.4.7",
-    "encoding": "^0.1.13"
+    "encoding": "^0.1.13",
+    "nx": "16.8.1"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": [
+          "{projectRoot}/.next"
+        ]
+      }
+    }
   }
 }
