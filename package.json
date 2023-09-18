@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3333",
+    "codegen": "graphql-codegen",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.8.3",
+    "@apollo/server": "^4.9.3",
+    "@as-integrations/next": "^2.0.2",
     "@radix-ui/react-dialog": "^1.0.4",
     "@types/node": "20.4.8",
     "@types/react": "18.2.18",
@@ -17,6 +21,7 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "firebase": "^9.23.0",
+    "graphql": "^16.8.0",
     "lodash.shuffle": "^4.2.0",
     "lodash.truncate": "^4.4.2",
     "next": "^13.4.19",
@@ -31,6 +36,10 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@types/lodash.shuffle": "^4.2.7",
     "@types/lodash.truncate": "^4.4.7",
     "encoding": "^0.1.13"

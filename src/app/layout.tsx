@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
 
 import SessionProvider from '@/providers/session-provider';
+import ApolloClientProvider from '@/providers/apollo-provider';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import './globals.css';
 import Script from 'next/script';
@@ -23,7 +24,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={session}>{children}</SessionProvider>
+        <SessionProvider session={session}>
+          <ApolloClientProvider>{children}</ApolloClientProvider>
+        </SessionProvider>
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
