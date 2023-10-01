@@ -1,21 +1,15 @@
 type Query {
-  getShowCollection: Collection!
+  getHero: Hero!
 }
 
-type Collection {
-  trending: [Show!]!
-  topRated: [Show!]!
-  netflix: [Show!]!
-  action: [Show!]!
-  comedy: [Show!]!
-  horror: [Show!]!
-  romance: [Show!]!
-  docs: [Show!]!
-}
-
-type Show {
+type Hero {
   id: ID!
-  overview: String
-  original_language: String!
-  original_title: String
+  title: String!
+  overview: String!
+  poster: String
+  matchPercentage: String!
+  releaseDate: String
+  language: String!
+  genres: [String!]!
+  trailer: String
 }

@@ -1,53 +1,68 @@
 import _truncate from 'lodash.truncate';
-import { Resolvers } from '@/generated/graphql';
-import { getShow } from '@/lib/fetcher';
-import { Show } from '@/types';
+import { Resolvers } from '@/generated/resolver-types';
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { getRandomShow } from '@/lib/util';
 
 const TRUNCATE_OPTIONS = { length: 149 };
 
-function modifyShow(shows: Show[]) {
-  return shows.map((show) => ({
-    id: String(show.id),
-    overview: show.overview,
-    original_language: show.original_language,
-    original_title: show.original_title,
-  }));
+async function getShowDetail(id: string) {
+  const resp = await fetch(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&append_to_response=videos`
+  );
+  const data = await resp.json();
+  return data;
 }
 
 const resolvers: Resolvers = {
   Query: {
-    async getShowCollection() {
-      const allShows = await getShow('tv');
+    async getHero() {
+      // TODO: dynamic media type tv | movie
+      const resp = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&with_networks=213`
+      );
+      const shows = await resp.json();
+      const randomShow = getRandomShow(shows.results);
 
-      return {
-        trending: modifyShow(allShows.trending),
-        topRated: modifyShow(allShows.topRated),
-        netflix: modifyShow(allShows.netflix),
-        action: modifyShow(allShows.action),
-        comedy: modifyShow(allShows.comedy),
-        horror: modifyShow(allShows.horror),
-        romance: modifyShow(allShows.romance),
-        docs: modifyShow(allShows.docs),
-      };
+      return randomShow;
     },
   },
-  Show: {
-    // id(show) {
-    //   return show.id;
-    // },
-    overview(show) {
-      return _truncate(show.overview ?? '', TRUNCATE_OPTIONS);
+  Hero: {
+    id(show) {
+      return String(show.id);
     },
-    // original_language(show) {
-    //   return show.original_language;
-    // },
-    // original_title(show) {
-    //   return show.original_title ?? '';
-    // },
+    title(show) {
+      return show.title ?? show.original_title ?? '';
+    },
+    async trailer(show) {
+      const showDetail = await getShowDetail(String(show.id));
+      const { key } = showDetail?.videos.results.find(
+        (video: any) => video.type === 'Trailer'
+      );
+      return `https://www.youtube.com/watch?v=${key}`;
+    },
+    matchPercentage(show) {
+      const match = Math.round((Number(show?.vote_average) / 10) * 100);
+      return `${match ?? '-'} %`;
+    },
+    async genres(show) {
+      const showDetail = await getShowDetail(String(show.id));
+      return showDetail.genres?.map((genre: any) => genre.name);
+    },
+    releaseDate(show) {
+      return show.release_date ?? show.first_air_date ?? '-';
+    },
+    overview(show) {
+      return show.overview ?? '-';
+    },
+    language(show) {
+      return show.original_language ?? '';
+    },
+    poster(show) {
+      return show.poster_path ?? show.backdrop_path ?? '';
+    },
   },
 };
 

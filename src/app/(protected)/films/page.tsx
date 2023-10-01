@@ -3,6 +3,7 @@ import { getSearchedResult, getShow } from '@/lib/fetcher';
 import Collections from '../../components/collections';
 import { getRandomShow } from '@/lib/util';
 import { Metadata } from 'next';
+import HeroApollo from '@/app/components/apollo-hero';
 
 export const metadata: Metadata = {
   title: 'Nerdflix | Films',
@@ -31,7 +32,7 @@ export default async function Page({
   return (
     <section>
       <div className="pt-10">
-        {searchedResults.length < 1 && <Hero type="show" show={randomShow} />}
+        {searchedResults.length < 1 && <HeroApollo type="show" />}
         <Collections
           collections={collections}
           searchedResults={searchedResults}
