@@ -1,5 +1,3 @@
-'use client';
-
 import Image from 'next/image';
 import { useQuery } from '@apollo/client';
 import { twMerge as tm } from 'tailwind-merge';
@@ -10,6 +8,7 @@ import PlayIcon from '@/app/ui/icons/play';
 import ExclamationCircleIcon from '@/app/ui/icons/exclamation-circle';
 import type { Show } from '@/types';
 import ShowModal from './show-modal';
+import { getClient } from '@/lib/apollo';
 
 // query name GetHero must provide otherwise graphql-codegen will ignore to generate types!!
 const HERO = gql(`
@@ -38,14 +37,24 @@ type HeroProps =
       children: ReactNode;
     };
 
-export default function HeroApollo(props: HeroProps & { className?: string }) {
-  const { data, loading } = useQuery(HERO);
+export default async function HeroApollo(
+  props: HeroProps & { className?: string }
+) {
+  // const { data, loading } = useQuery(HERO);
+  const { data } = await getClient().query({
+    query: HERO,
+    context: {
+      fetchOptions: { next: { revalidate: 5 } },
+    },
+  });
   const { getHero: hero } = data || {};
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
 
   const handleToggleDialog = () => {
-    setToggle(true);
+    // setToggle(true);
   };
+
+  console.log('hero', hero);
 
   let banner: JSX.Element | null;
   if (props.type === 'show') {
@@ -82,7 +91,7 @@ export default function HeroApollo(props: HeroProps & { className?: string }) {
               <button
                 aria-label="Play video"
                 className="h-auto gap-1.5 rounded bg-white px-4 py-2 flex items-center justify-center text-sm font-medium"
-                onClick={handleToggleDialog}
+                // onClick={handleToggleDialog}
               >
                 <PlayIcon />
                 Play
@@ -90,7 +99,7 @@ export default function HeroApollo(props: HeroProps & { className?: string }) {
               <button
                 aria-label="Open show's details modal"
                 className="h-auto gap-2 rounded border border-solid border-white px-4 py-2 text-white flex items-center justify-center"
-                onClick={handleToggleDialog}
+                // onClick={handleToggleDialog}
               >
                 <ExclamationCircleIcon />
                 More Info
@@ -98,11 +107,11 @@ export default function HeroApollo(props: HeroProps & { className?: string }) {
             </div>
           </div>
         </div>
-        <ShowModal
+        {/* <ShowModal
           toggle={toggle}
           toggleHandler={setToggle}
           show={{} as Show}
-        />
+        /> */}
       </>
     );
   } else {
