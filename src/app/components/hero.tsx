@@ -30,6 +30,7 @@ export default function Hero(props: HeroProps & { className?: string }) {
 
   let banner!: JSX.Element;
   if (props.type === 'show') {
+    console.log(props.show)
     banner = props.show && (
       <>
         <div className="container w-full max-w-screen-2xl px-14">

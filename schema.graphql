@@ -1,0 +1,21 @@
+type Query {
+  getHero(media:Media!): Hero!
+}
+
+type Hero {
+  id: ID!
+  title: String!
+  overview: String!
+  poster: String
+  matchPercentage: String!
+  releaseDate: String
+  language: String!
+  genres(media:Media!): [String!]!
+  trailer(media:Media!): String
+}
+
+enum Media {
+  tv
+  movie
+}
+
